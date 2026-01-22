@@ -9,6 +9,9 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
     steps:
       - name: Checkout Latest Commit
         uses: actions/checkout@v4
@@ -45,4 +48,4 @@ jobs:
         with:
           artifacts: "app/build/outputs/apk/release/look4sat.apk"
           bodyFile: fastlane/metadata/android/en-US/whatsnew/whatsnew-en-US
-          token: ${{ secrets.RELEASE_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
